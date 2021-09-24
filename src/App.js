@@ -1,22 +1,34 @@
-const { useEffect, useState } = require("react");
+import { useState } from "react";
+import "./App.css";
+import AddTodo from "./components/AddTodo";
+import ListTodo from "./components/ListTodo";
 
-function useInterval(timeout, getValue) {
-  const [value, setValue] = useState(getValue);
-  useEffect(() => {
-    const intervalID = setInterval(
-      () => setValue(getValue()),
-      timeout
-    );
-    return function () {
-      clearInterval(intervalID);
-    }
-  }, []);
-  return value;
+const App = () => {
+
+  const [listTask, setListTask] = useState([])
+
+  const addNewTask = (newTask) => {
+    // alert(newTask)
+    if(newTask!="")
+    setListTask([...listTask,newTask])
+    else alert(" task title should not be empty 😎")
+  }
+
+  return (
+    <>
+      <div>
+        {/* addTodo Component */}
+        <AddTodo addTaskToList={addNewTask} />
+        <hr color="gray" />
+        <div className="filter border w-50 mx-auto">
+          <input type="text" placeholder="filter task by title" className="form-control" />
+          <i className="fa fa-search" aria-hidden="true" />
+        </div>
+        {/* List Todo Component */}
+        <ListTodo list={listTask} />
+      </div>
+    </>
+  )
 }
 
-const getCurrentDate = () => new Date();
-
-export default function App() {
-  const date = useInterval(1000, getCurrentDate);
-  return <p>Nous sommes le {date.toLocaleString("fr-FR")}</p>;
-}
+export default App
