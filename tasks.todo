@@ -1,4 +1,7 @@
-Add task feature :
-    ✔ onclick on add button i should retrieve the text typed on the input @done(21-09-24 10:14)
-    ✔ clean the input text @done(21-09-24 10:17)
-    [] add the value typed (if it's not empty) to the array list 
+Delete Task :
+    ✔ get the unique index of the selected element when clicking the btn delete @done(21-09-24 11:46)
+    ✔ pass the id to the parent element where the list of task is declared @done(21-09-24 11:46)
+    ✔ delete the task by the index from the list @done(21-09-24 11:46)
+    [] add confirmation before deleting the task 
+
+    

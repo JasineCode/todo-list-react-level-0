@@ -14,18 +14,31 @@ const App = () => {
     else alert(" task title should not be empty 😎")
   }
 
+  //delete task by id
+  const deteleTaskById = (idTask)=>{
+
+    if(window.confirm("Are you sure ?")===false) return ;
+
+    let newListTask = [...listTask];
+    newListTask = newListTask.filter((_,index)=>index!=idTask)
+    setListTask([...newListTask])
+
+  }
   return (
     <>
       <div>
         {/* addTodo Component */}
-        <AddTodo addTaskToList={addNewTask} />
+        <AddTodo addTaskToList = { addNewTask } />
         <hr color="gray" />
         <div className="filter border w-50 mx-auto">
           <input type="text" placeholder="filter task by title" className="form-control" />
           <i className="fa fa-search" aria-hidden="true" />
         </div>
         {/* List Todo Component */}
-        <ListTodo list={listTask} />
+        <ListTodo 
+          list={listTask}
+          onDeleteTask={deteleTaskById}
+         />
       </div>
     </>
   )
