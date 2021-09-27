@@ -1,1 +1,1 @@
-# todo-list-react-level-0
+# Shopping Cart Challenge level 1
