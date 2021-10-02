@@ -56,7 +56,18 @@ function ShoppingCart() {
         //update the state
         setOrders([...newOrders])
     }
-
+    //add quantity
+    const addQuantity = (orderId)=>{
+        
+        //get a copy from the current list 
+        let newOrders = [...orders]
+        //change the copy : delete the seleted element
+        newOrders = newOrders.forEach((o)=>{
+                if(o.id===orderId) o.quantity++
+        })
+        //update the state
+        setOrders([...newOrders])
+    }
 
     return (
         <>
@@ -73,7 +84,7 @@ function ShoppingCart() {
                 </div>
                 <hr color="#868A93" />
                 {/* body of the shopping cart */}
-                <ShoppingCartList list={orders} onDeleteItem={deleteOrderById}/>
+                <ShoppingCartList list={orders} onDeleteItem={deleteOrderById} onAddQuantity={addQuantity}/>
             </article>
             {/* Summary */}
             <SummaryForm />

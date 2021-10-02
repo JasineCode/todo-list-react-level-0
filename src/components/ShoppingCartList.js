@@ -1,7 +1,7 @@
 import React from 'react'
 import ShoppingCartItem from './ShoppingCartItem'
 
-const ShoppingCartList = ({ list ,onDeleteItem}) => {
+const ShoppingCartList = ({ list ,onDeleteItem,onAddQuantity}) => {
     // console.log(list);
     return (
         <ul className="list-group list-group-flush">
@@ -9,6 +9,7 @@ const ShoppingCartList = ({ list ,onDeleteItem}) => {
                             item={o} 
                             key={o.id} 
                             onDeleteItem={onDeleteItem} 
+                            onAddQuantity={onAddQuantity}
                     />)}
         </ul>
     )
