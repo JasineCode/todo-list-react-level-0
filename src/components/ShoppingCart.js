@@ -43,7 +43,7 @@ function ShoppingCart() {
 
     const [orders, setOrders] = useState(LIST_ORDERS)
 
-    const deleteOrderById = (orderId) =>{
+    const deleteOrderById = (orderId) => {
 
         //confirm with the user 
         if( !window.confirm("Are you sure ?") )
@@ -52,7 +52,7 @@ function ShoppingCart() {
         //get a copy from the current list 
         let newOrders = [...orders]
         //change the copy : delete the seleted element
-        newOrders = newOrders.filter((o)=>o.id!=orderId)
+        newOrders = newOrders.filter((o)=>o.id != orderId)
         //update the state
         setOrders([...newOrders])
     }
