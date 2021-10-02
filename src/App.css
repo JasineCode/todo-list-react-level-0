@@ -1,9 +1,23 @@
-.filter {
-  position: relative;
+main {
+  background-color: #D0C7FC;
 }
 
-.filter i {
-  position: absolute;
-  top: 10px;
-  right: 20px
+.shopping-cart-list {
+  border-radius: 12px 0px 0px 12px;
+
+}
+
+.checkout {
+  background-color: #EAE8E8;
+  width: 28%;
+  border-radius: 0 12px 12px 0;
+}
+
+.btn-black {
+  background-color: #111112;
+  border-color: #111112;
+}
+.btn-black:hover {
+  background-color:#111112d6;
+  border-color: #111112;
 }

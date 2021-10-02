@@ -5,6 +5,7 @@ specifiers:
   '@testing-library/react': ^11.2.7
   '@testing-library/user-event': ^12.8.3
   bootstrap: ^5.1.0
+  pnpm: ^6.16.0
   prop-types: ^15.7.2
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -16,6 +17,7 @@ dependencies:
   '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 12.8.3
   bootstrap: 5.1.1
+  pnpm: 6.16.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
@@ -8492,6 +8494,12 @@ packages:
       ts-pnp: 1.2.0
     transitivePeerDependencies:
       - typescript
+    dev: false
+
+  /pnpm/6.16.0:
+    resolution: {integrity: sha512-g5rbneSqacQaEW0gdvGouxNHbDIpLTShg+cS4yCUwnj32RwMHwxChtcxPOR9VNZvNegcKE9LFUA0PA/uN37mDA==}
+    engines: {node: '>=12.17'}
+    hasBin: true
     dev: false
 
   /portfinder/1.0.28:
