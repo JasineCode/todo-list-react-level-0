@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ShoppingCartItem = ({item,onDeleteItem}) => {
+const ShoppingCartItem = ({ item, onDeleteItem, onAddQuantity, onDecraseQuantity }) => {
 
 
 
@@ -17,16 +17,26 @@ const ShoppingCartItem = ({item,onDeleteItem}) => {
             </div>
             {/* middle part manage quantity */}
             <div className="d-flex justify-content-center align-items-center" style={{ width: 'fit-content' }}>
-                <button type="button" className="btn btn-outline-primary">-</button>
+                
+                <button type="button" 
+                        className="btn btn-outline-primary"
+                        onClick={() => onDecraseQuantity(item.id)}
+                >-</button>
+                
                 <input type="number" className="form-control w-25 text-center m-1" value={item.quantity} />
-                <button type="button" className="btn btn-outline-primary"
-                        onClick={()=>onAddQuantity(item.id)}>+</button>
+                
+                <button type="button" 
+                        className="btn btn-outline-primary"
+                        onClick={() => onAddQuantity(item.id)}>
+                +</button>
             </div>
+
             {/* price part  */}
             <p className="m-0">$ {item.price}</p>
+            
             {/* delete button */}
             <button className="btn btn-danger"
-                    onClick={()=>onDeleteItem(item.id)}>
+                onClick={() => onDeleteItem(item.id)}>
                 <i className="fas fa-trash-alt" />
             </button>
         </li>

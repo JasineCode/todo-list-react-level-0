@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ShoppingCartList from './ShoppingCartList'
 import SummaryForm from './SummaryForm'
 
@@ -12,7 +12,7 @@ const LIST_ORDERS = [
             "-Tennis_Club_Icon_Screen_Printed_Tshirt-1619171837-1.jpg?" +
             "quality=90&fit=bounds&width=420",
         price: 20,
-        quantity: 2,
+        quantity: 1,
         categoryName: "Shirt"
     },
     {
@@ -23,7 +23,7 @@ const LIST_ORDERS = [
             "-Tennis_Club_Icon_Screen_Printed_Tshirt-1619171837-1.jpg?" +
             "quality=90&fit=bounds&width=420",
         price: 10,
-        quantity: 3,
+        quantity: 1,
         categoryName: "Shirt"
     },
     {
@@ -34,7 +34,7 @@ const LIST_ORDERS = [
             "-Tennis_Club_Icon_Screen_Printed_Tshirt-1619171837-1.jpg?" +
             "quality=90&fit=bounds&width=420",
         price: 13,
-        quantity: 5,
+        quantity: 1,
         categoryName: "Shirt"
     }
 ]
@@ -42,33 +42,71 @@ const LIST_ORDERS = [
 function ShoppingCart() {
 
     const [orders, setOrders] = useState(LIST_ORDERS)
+    const [priceItems, setPriceItems] = useState()
+
+    // compute total price , when component did mount
+    useEffect(() => {
+
+        let priceItems = 0
+        orders.forEach(o => priceItems += o.quantity * o.price)
+        setPriceItems(priceItems)
+
+    }, [])
+
+    // --------------------------FUNCTIONS---------------------------
+
 
     const deleteOrderById = (orderId) => {
 
         //confirm with the user 
-        if( !window.confirm("Are you sure ?") )
-        return 
+        if (!window.confirm("Are you sure ?"))
+            return
 
         //get a copy from the current list 
         let newOrders = [...orders]
         //change the copy : delete the seleted element
-        newOrders = newOrders.filter((o)=>o.id != orderId)
+        newOrders = newOrders.filter((o) => o.id != orderId)
         //update the state
         setOrders([...newOrders])
     }
     //add quantity
-    const addQuantity = (orderId)=>{
-        
+    const addQuantity = (orderId) => {
+
         //get a copy from the current list 
         let newOrders = [...orders]
+        let newPriceItems = 0;
         //change the copy : delete the seleted element
-        newOrders = newOrders.forEach((o)=>{
-                if(o.id===orderId) o.quantity++
+        newOrders.forEach((o) => {
+            if (o.id === orderId) {
+                o.quantity++;
+                newPriceItems = priceItems + o.price
+            }
+
         })
         //update the state
         setOrders([...newOrders])
+        setPriceItems(newPriceItems)
     }
 
+    //minus quantity
+    const decraseQuantity = (orderId) => {
+
+        //get a copy from the current list 
+        let newOrders = [...orders]
+        let newPriceItems = 0;
+        //change the copy : delete the seleted element
+        newOrders.forEach((o) => {
+            if (o.id === orderId && o.quantity > 1) {
+                o.quantity--
+                newPriceItems = priceItems - o.price
+            }
+            
+        })
+        //update the state
+        setOrders([...newOrders])
+        setPriceItems(newPriceItems === 0 ? priceItems : newPriceItems)
+    }
+    // ---------------------------RENDER---------------------------------
     return (
         <>
             <article className="shopping-cart-list flex-grow-1 p-5 bg-white ">
@@ -84,12 +122,19 @@ function ShoppingCart() {
                 </div>
                 <hr color="#868A93" />
                 {/* body of the shopping cart */}
-                <ShoppingCartList list={orders} onDeleteItem={deleteOrderById} onAddQuantity={addQuantity}/>
+                <ShoppingCartList
+                    list={orders}
+                    onDeleteItem={deleteOrderById}
+                    onAddQuantity={addQuantity}
+                    onDecraseQuantity={decraseQuantity}
+                />
             </article>
             {/* Summary */}
-            <SummaryForm />
+            <SummaryForm itemsPrice={priceItems} nbItems={orders.length} />
         </>
     )
+
+
 }
 
 export default ShoppingCart
