@@ -1,8 +1,6 @@
 //dependances
 import React from 'react';
 import ReactDOM from 'react-dom';
-//css
-import 'bootstrap/dist/css/bootstrap.css';
 
 //component
 import App from './App';

@@ -1,17 +1,14 @@
 import React from 'react'
-import "./App.css"
-import ShoppingCart from './components/ShoppingCart'
+import ListText from './componets/ListText';
+
 
 const App = () => {
   return (
-    <main className="container border mt-5 p-4">
-      <section className="shopping-cart d-flex mx-auto">
-        {/* Shopping cart  */}
-       <ShoppingCart/>
-      </section>
-    </main>
-
+    <div style={{textAlign:"center"}}>
+      <h1>Liste de Text Application </h1>
+      <ListText/>
+    </div>
   )
 }
 
-export default App
+export default App;
