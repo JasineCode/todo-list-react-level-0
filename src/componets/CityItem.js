@@ -1,6 +1,10 @@
 import React from 'react'
 
-const CityItem = ({name}) => <li>{name} <button>X</button></li>
+const CityItem = ({name,onDeleteItem,id}) => 
+    <li>
+        {name} 
+    <button 
+        onClick={()=>onDeleteItem(id)}>X</button></li>
 
 
 
