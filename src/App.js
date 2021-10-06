@@ -4,15 +4,6 @@ import CityAdd from './componets/CityAdd';
 import CityList from './componets/CityList';
 
 const App = () => {
-  
-
-  // let A = ["1","2","3"]
-  // let B = A;
-  // B[0]="5";
-  // console.log(A)
-  // console.log(B)
-
-
 
   const [cities, setCities] = useState(["casa","rabat","fes"])
 
