@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({hideFilter=false}) => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,7 +15,7 @@ const Header = () => {
                                 <a className="nav-link active" href="#">Home</a>
                             </li>
                         </ul>
-                        <form className="d-flex w-50">
+                        <form className={ hideFilter ? "d-none": "d-flex w-50" } >
                             <div className="input-group me-2 w-75">
                                 <input type="text" className="form-control" placeholder="Filter Movie By Title" />
                                 <span className="input-group-text"><i className="fas fa-search" /></span>
