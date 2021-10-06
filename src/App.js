@@ -1,11 +1,10 @@
 import React from 'react'
+import AppRoute from './routes/AppRoute';
 
 
 const App = () => {
   return (
-    <div>
-      Movie APP Challenge 😎 !!
-    </div>
+    <AppRoute />
   )
 }
 

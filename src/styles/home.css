@@ -1,0 +1,13 @@
+.card {
+    margin: 11px;
+}
+
+main {
+    width: 79%;
+    padding: 10px;
+}
+
+.card-head {
+    height: 182px;
+    overflow-y: hidden;
+}
