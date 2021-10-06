@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Text = ({title,onDeleteText,id}) => {
+const Text = ({title,onDeleteTextList,id}) => {
     return (
         <div style={{border:".5px solid",width:"fit-content",margin:"10px auto"}}>
             <p> {title} </p>
-            <button onClick={()=>onDeleteText(id)}>delete</button>
+            <button onClick={()=>onDeleteTextList(id)}>delete</button>
         </div>
     )
 }
