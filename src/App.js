@@ -1,9 +1,12 @@
-import React from 'react'
+import { BrowserRouter ,Route} from "react-router-dom";
+import LoginPage from "./auth/Login";
 
 
 const App = () => {
   return (
-    hello
+    <BrowserRouter>
+      <Route path="/admin" component={LoginPage}/>
+    </BrowserRouter>
   )
 }
 
