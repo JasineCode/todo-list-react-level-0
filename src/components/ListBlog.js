@@ -1,12 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import BlogItem from './BlogItem'
 
-const ListBlog = ({ list = [] }) => {
+const ListBlog = ({blogs = [] }) => {
     return (
         <ul className="list-group list-group-flush">
-            {list.map(b => <BlogItem blog={b} key={b.id} />)}
+            {blogs.map(b => <BlogItem blog={b} key={b.id} />)}
         </ul>
     )
 }
-
-export default ListBlog
+const ListBlogStore = connect((state)=>({blogs:state.articles}))(ListBlog)
+export default ListBlogStore

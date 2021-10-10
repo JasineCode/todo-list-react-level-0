@@ -1,11 +1,11 @@
 import React from 'react'
 
-const BlogItem = ({ title, description }) => {
+const BlogItem = ({ blog }) => {
     return (
         <li className="list-group-item">
-            <h3>{title}</h3>
+            <h3>{blog.title}</h3>
             <p className="lead">
-                {description}
+                {blog.description}
             </p>
         </li>
     )
