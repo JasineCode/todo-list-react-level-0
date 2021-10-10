@@ -1,12 +1,16 @@
-import { BrowserRouter ,Route} from "react-router-dom";
-import LoginPage from "./auth/Login";
+import AddBlog from "./components/AddBlog";
 
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Route path="/admin" component={LoginPage}/>
-    </BrowserRouter>
+    <main className="container text-center">
+      <AddBlog/>
+      <hr />
+      <h1>List Blogs</h1>
+      <input type="search" placeholder="Filter By title" className="form-control" />
+     
+    </main>
+
   )
 }
 
