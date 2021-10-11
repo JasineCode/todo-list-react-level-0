@@ -20,7 +20,6 @@ const blogReducer = (state = initialState, action) => {
     switch (type) {
         case ADD_ARTICLE:
             return [...state.articles, new Blog(payload.title, payload.description)]
-
         default:
             return state;
     }
