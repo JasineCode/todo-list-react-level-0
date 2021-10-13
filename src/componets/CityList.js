@@ -5,11 +5,11 @@ const CityList = ({ list, onDeleteList }) => {
     return (
 
         <ul>
-            {list?.map((c, index) => <CityItem
-                    key={index}
-                    name={c}
+            {list?.map((c) => <CityItem
+                    key={c.id}
+                    name={c.name}
                     onDeleteItem={onDeleteList}
-                    id={index}
+                    id={c.id}
                 />
             )}
         </ul>

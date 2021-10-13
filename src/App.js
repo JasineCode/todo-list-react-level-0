@@ -2,33 +2,37 @@ import React, { useState } from 'react'
 import "./App.css"
 import CityAdd from './componets/CityAdd';
 import CityList from './componets/CityList';
+import { City } from './models/city';
+
+
+
+const LIST_CITY = [
+  new City(1,"Casablanca"),
+  new City(2,"Rabat"), 
+]
 
 const App = () => {
 
-  const [cities, setCities] = useState(["casa","rabat","fes"])
+  const [cities, setCities] = useState(LIST_CITY)
 
-  const [citiesCopie, setCitiesCopie] = useState(["casa","rabat","fes"])
+  const [citiesCopie, setCitiesCopie] = useState(LIST_CITY)
 
   //add city
-  const addCity = (newCity) => {
-    //copie cities
-    let newCities = cities
-    //apply changes on the copie 
-    newCities.push(newCity)
-    //update the state 
-    setCities(newCities)
-    setCitiesCopie(newCities)
+  const addCity = (nameCity) => {
+    let newList = [...cities,new City(cities.length+1,nameCity)]
+    setCities([...newList])
+    setCitiesCopie([...newList])
 
   }
 
   //delete city
-  const deleteCityById = (cityIndex)=>{
+  const deleteCityById = (cityId)=>{
     
     //are you sure 
     if(window.confirm("Are you sure ")===false) return  
     
     //copie cities
-    let newCities = cities.filter((_,index)=>index!=cityIndex)
+    let newCities = cities.filter((c)=>c.id!=cityId)
   
     //update the state 
     setCities(newCities) 
