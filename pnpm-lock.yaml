@@ -10,6 +10,7 @@ specifiers:
   react: ^17.0.2
   react-dom: ^17.0.2
   react-scripts: 4.0.3
+  redux: ^4.1.1
   web-vitals: ^1.1.2
 
 dependencies:
@@ -21,6 +22,7 @@ dependencies:
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
+  redux: 4.1.1
   web-vitals: 1.1.2
 
 devDependencies:
@@ -9644,6 +9646,12 @@ packages:
     dependencies:
       indent-string: 4.0.0
       strip-indent: 3.0.0
+    dev: false
+
+  /redux/4.1.1:
+    resolution: {integrity: sha512-hZQZdDEM25UY2P493kPYuKqviVwZ58lEmGQNeQ+gXa+U0gYPUBf7NKYazbe3m+bs/DzM/ahN12DbF+NG8i0CWw==}
+    dependencies:
+      '@babel/runtime': 7.15.4
     dev: false
 
   /regenerate-unicode-properties/8.2.0:
