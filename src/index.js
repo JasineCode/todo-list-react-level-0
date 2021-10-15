@@ -1,30 +1,51 @@
-import { Action } from "./models/action"
+import { Action } from "./models/action";
 import { Task } from "./models/task";
-//our store 
-const initialState = {
 
+// la partie donnees
+const initialState = {
   todos: [
-    new Task(1, "task 1"),
-    new Task(2, "task 2"),
-    new Task(3, "task 3", true),
+    new Task(1, "Task 1"),
+    new Task(2, "Task 2")
   ]
 }
 
-//types of actions
-const TYPE_TODO_ADD = "todo/add";
-//reducer
-const TodoReducer = (state = initialState.todos, action = new Action()) => {
-console.log(state)
+//types
+export const TYPE_TODO_ADD = "todo/add"
+
+//reducer functions
+const TodoReducer = (
+  state,
+  action=new Action()
+) => {
   switch (action.type) {
+
     case TYPE_TODO_ADD:
-      return [...state, new Task(action.payload.id,action.payload.title, action.payload.isCompleted)]
+      return [...state,
+      new
+        Task(
+          state.length + 1,
+          action.payload.title,
+          action.payload.isCompleted
+        )
+      ]
     default:
       return state
   }
 }
+//utilisation
+const newStateTodo1 = 
+TodoReducer(initialState.todos,
+  new Action(TYPE_TODO_ADD,new Task(3,"task 3")))
 
-//use of the reducer
-const newState = TodoReducer(undefined, new Action(TYPE_TODO_ADD, new Task(4, "task 4")))
-const newState2 = TodoReducer(newState, new Action(TYPE_TODO_ADD, new Task(5, "task 5")))
-console.log(newState)
-console.log(newState2)
+console.log(newStateTodo1)
+
+
+const newStateTodo2 = TodoReducer(newStateTodo1,
+  new Task(4, "Task 4"),
+  TYPE_TODO_ADD)
+console.log(newStateTodo2)
+
+const newStateTodo3 = TodoReducer(newStateTodo2,
+  new Task(5, "Task 5"),
+  TYPE_TODO_ADD)
+console.log(newStateTodo3)
