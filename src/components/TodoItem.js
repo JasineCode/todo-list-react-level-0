@@ -1,6 +1,10 @@
 import React from 'react'
 
 const TodoItem = ({ task ,onToggle}) => {
+    const handleClick = ()=> {
+        if(!window.confirm("Are you sure ?")) return
+        onToggle(task.id)
+    }
     return (
         <li className="list-group-item d-flex justify-content-between" >
             <div className="form-check">
@@ -17,7 +21,7 @@ const TodoItem = ({ task ,onToggle}) => {
 
             <button
                 className="btn btn-danger"
-                onClick={()=>onToggle(task.id)}>
+                onClick={()=>handleClick}>
                 delete
             </button>
         </li>

@@ -6,7 +6,15 @@ import TodoItem from './TodoItem'
 const TodoList = ({ todos = [], toggleTask }) => {
     return (
         <ul className=" w-50 mx-auto mt-3">
-            {todos.map(t => <TodoItem key={t.id} task={t} onToggle={toggleTask} />)}
+            {
+                todos.map(t =>
+                    <TodoItem
+                        key={t.id}
+                        task={t}
+                        onToggle={toggleTask}
+                    />
+                )
+            }
         </ul>
     )
 }
@@ -14,10 +22,10 @@ const TodoList = ({ todos = [], toggleTask }) => {
 const TodoListStore =
     connect(
         (state) => ({ todos: state }),
-        (dispatch) =>({
-            toggleTask:taskId=>dispatch({
-                type:TODO_DELETE,
-                payload:{taskId}
+        (dispatch) => ({
+            toggleTask: taskId => dispatch({
+                type: TODO_DELETE,
+                payload: { taskId }
             })
         })
     )
