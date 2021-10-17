@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TODO_DELETE } from '../store/types'
+import { deleteAction } from '../store/actions/todo'
+import { todosSelector } from '../store/selectors/todo'
 import TodoItem from './TodoItem'
 
 const TodoList = ({ todos = [], toggleTask }) => {
@@ -21,12 +22,11 @@ const TodoList = ({ todos = [], toggleTask }) => {
 
 const TodoListStore =
     connect(
-        (state) => ({ todos: state }),
+        (state) => ({ 
+            todos: todosSelector(state) 
+        }),
         (dispatch) => ({
-            toggleTask: taskId => dispatch({
-                type: TODO_DELETE,
-                payload: { taskId }
-            })
+            toggleTask: taskId => dispatch(deleteAction(taskId))
         })
     )
 

@@ -15,17 +15,17 @@ const todoReducer = (
 
         case TODO_ADD:
             return [...state,
-            new Task(
-                state.length + 1,
-                payload.title
-            )
+                new Task(
+                    state.length + 1,
+                    payload.title
+                )
             ]
 
         case TODO_DELETE:
             return [...state.
                 filter(
                     t =>
-                        t.id != payload.taskId
+                    t.id != payload.taskId
                 )
             ]
         default:

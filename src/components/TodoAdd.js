@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Task } from '../models'
+import { addAction } from '../store/actions/todo'
 import { TODO_ADD } from '../store/types'
 
 const TodoAdd = ({ addTask }) => {
@@ -41,10 +42,7 @@ const TodoAdd = ({ addTask }) => {
 }
 
 const TodoAddStore = connect(null, (dispatch) => ({
-    addTask: taskTitle => dispatch({
-        type: TODO_ADD,
-        payload: new Task(0, taskTitle)
-    })
+    addTask: taskTitle => dispatch(addAction(taskTitle))
 }))
 
 export default TodoAddStore(TodoAdd)
