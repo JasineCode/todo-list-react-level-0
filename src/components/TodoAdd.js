@@ -29,10 +29,10 @@ const TodoAdd = ({ onAdd }) => {
                 value={title}
             />
             <button
-                className="btn btn-success text-uppercase"
+                className="btn btn-success"
                 type="button"
                 onClick={handleClick}>
-                save
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
             </button>
         </div>
 

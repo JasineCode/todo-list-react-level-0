@@ -1,7 +1,11 @@
-import { createStore } from "redux";
-import todoReducer from "./reducers";
+import { combineReducers, createStore } from "redux";
+import { filterReducer } from "./reducers/filter";
+import todoReducer from "./reducers/todo";
 
-const store = createStore(todoReducer,
+const store = createStore(combineReducers({
+    todos:todoReducer,
+    filter:filterReducer
+}),
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

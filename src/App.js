@@ -1,15 +1,17 @@
 import React from 'react'
 import store from './store'
 import { Provider } from 'react-redux'
-import TodoListStore from './components/TodoList'
-import TodoAddStore from './components/TodoAdd'
+import TodoList from './components/TodoList'
+import TodoAdd from './components/TodoAdd'
+import TodoFilter from './components/TodoFilter'
 
 const App = () => {
     return (
         <Provider store={store}>
-            <TodoAddStore/>
+            <TodoAdd />
             <hr />
-            <TodoListStore/>
+            <TodoFilter />
+            <TodoList />
         </Provider>
     )
 }

@@ -12,7 +12,7 @@ const TodoList = ({ todos = [], onDeleteTask }) => {
     // },[onDeleteTask])
 
     return (
-        <ul className=" w-50 mx-auto mt-3">
+        <ul className=" w-25 mx-auto mt-3 p-0">
             {
                 todos.map(t =>
                     <TodoItem
