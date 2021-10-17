@@ -10,17 +10,22 @@ const todoReducer = (
     state = initialState,
     action = new Action()
 ) => {
-
-    switch (action.type) {
+    const { type, payload } = action
+    switch (type) {
 
         case TODO_ADD:
-            return [...state, new Task(...action.payload)]
+            return [...state,
+            new Task(
+                state.length + 1,
+                payload.title
+            )
+            ]
 
         case TODO_DELETE:
             return [...state.
                 filter(
                     t =>
-                        t.id != action.payload.taskId
+                        t.id != payload.taskId
                 )
             ]
         default:
