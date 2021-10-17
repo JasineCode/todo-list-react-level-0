@@ -2,12 +2,12 @@ import React from 'react'
 import store from './store'
 import { Provider } from 'react-redux'
 import TodoListStore from './components/TodoList'
-import TodoAdd from './components/TodoAdd'
+import TodoAddStore from './components/TodoAdd'
 
 const App = () => {
     return (
         <Provider store={store}>
-            <TodoAdd/>
+            <TodoAddStore/>
             <hr />
             <TodoListStore/>
         </Provider>

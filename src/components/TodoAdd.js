@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { Task } from '../models'
+import { connect, useDispatch } from 'react-redux'
 import { addAction } from '../store/actions/todo'
-import { TODO_ADD } from '../store/types'
 
-const TodoAdd = ({ addTask }) => {
+const TodoAdd = ({ onAdd }) => {
 
     const [title, setTitle] = useState("")
     //add
     const handleClick = () => {
         if (title == "") alert("error : title cannot be empty 😥")
         else {
-            addTask(title)
+            onAdd(title)
             setTitle("")
         }
 
@@ -41,8 +39,13 @@ const TodoAdd = ({ addTask }) => {
     )
 }
 
-const TodoAddStore = connect(null, (dispatch) => ({
-    addTask: taskTitle => dispatch(addAction(taskTitle))
-}))
+// const TodoAddStore = connect(null, (dispatch) => ({
+//     addTask: taskTitle => dispatch(addAction(taskTitle))
+// }))
 
-export default TodoAddStore(TodoAdd)
+const TodoAddStore = ()=>{
+    const dispatch = useDispatch()
+    const addTask = taskTitle => dispatch(addAction(taskTitle))
+    return <TodoAdd onAdd={addTask} />
+}
+export default TodoAddStore

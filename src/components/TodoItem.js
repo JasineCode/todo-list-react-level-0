@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TodoItem = ({ task ,onToggle}) => {
+const TodoItem = ({ task ,onDelete}) => {
 
     //handle click event delete btn
     const handleClick = ()=> {
         if(!window.confirm("Are you sure ?")) return
-        onToggle(task.id)
+        onDelete(task.id)
     }
 
     return (
