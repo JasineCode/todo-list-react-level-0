@@ -21,7 +21,7 @@ const TodoItem = ({ task ,onToggle}) => {
 
             <button
                 className="btn btn-danger"
-                onClick={()=>handleClick}>
+                onClick={handleClick}>
                 delete
             </button>
         </li>
