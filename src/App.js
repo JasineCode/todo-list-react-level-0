@@ -1,17 +1,30 @@
-import React from 'react'
-import store from './store'
-import { Provider } from 'react-redux'
-import TodoListStore from './components/TodoList'
-import TodoAdd from './components/TodoAdd'
+import React, { useState, useCallback } from "react";
 
-const App = () => {
+function Button(props) {
+    return <button onClick={props.onClick}>{props.name}</button>;
+}
+
+function App() {
+    const [count, setCount] = useState(0);
+    const [isActive, setActive] = useState(false);
+
+    const handleCount = useCallback(() => setCount(count + 1), [count]);
+    const handleShow = useCallback(() => setActive(!isActive), [isActive]);
+
     return (
-        <Provider store={store}>
-            <TodoAdd/>
-            <hr />
-            <TodoListStore/>
-        </Provider>
-    )
+        <div className="App">
+            {isActive && (
+                <div>
+                    <h1>{count}</h1>
+                    <Button onClick={handleCount} name="Increment" />
+                </div>
+            )}
+            <Button
+                onClick={handleShow}
+                name={isActive ? "Hide Counter" : "Show Counter"}
+            />
+        </div>
+    );
 }
 
 export default App
