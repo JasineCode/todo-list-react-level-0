@@ -1,36 +1,29 @@
-
-import { Action, Task } from "../../models";
-import { TODO_ADD, TODO_DELETE } from "../types";
+import { Action } from "../../models/action";
+import { Task } from "../../models/task";
+import { TYPE_TODO_ADD } from "../types/todo";
 
 const initialState = [
-    new Task(1, "task 1", true),
-    new Task(2, "task 2", true)
+    new Task(1, "create components 😃"),
+    new Task(2, "create state & pros 😃"),
+    new Task(3, "create the store 😃"),
+    new Task(4, "create the actions 😃"),
+    new Task(5, "create the types 😃"),
 ]
-const todoReducer = (
-    state = initialState,
+
+export const TodoReducer = (
+    state = initialState, 
     action = new Action()
 ) => {
-    const { type, payload } = action
-    switch (type) {
+    switch (action.type) {
 
-        case TODO_ADD:
-            return [...state,
-            new Task(
-                state.length + 1,
-                payload.title
-            )
-            ]
+        case TYPE_TODO_ADD:
+            return [...state, 
+                new Task(
+                state.length+1,
+                action.payload.taskTitle
+            )]
 
-        case TODO_DELETE:
-            return [...state.
-                filter(
-                    t =>
-                        t.id != payload.taskId
-                )
-            ]
-        default:
-            return state
+        default: return state
     }
 }
 
-export default todoReducer

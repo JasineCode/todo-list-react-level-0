@@ -1,50 +1,42 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Task } from '../models'
-import { TODO_ADD } from '../store/types'
+import { TYPE_TODO_ADD } from '../store/types/todo'
 
-const TodoAdd = ({ addTask }) => {
+const TodoAdd = ({ onAddTask }) => {
 
-    const [title, setTitle] = useState("")
-    //add
+
+    const [task, setTask] = useState("")
+
     const handleClick = () => {
-        if (title == "") alert("error : title cannot be empty 😥")
-        else {
-            addTask(title)
-            setTitle("")
+        if (task === "") {
+            alert(' task shouldnt be empty 😢 !')
+            return
         }
-
-    }
-    //input
-    const handleChangeInput = (e) => {
-        setTitle(e.target.value)
+        onAddTask(task)
+        setTask("")
     }
 
     return (
-        <div className="input-group mb-3 w-50 mx-auto mt-3">
+        <div className="text-center m-3">
             <input
                 type="text"
-                className="form-control"
-                placeholder="Add new task here "
-                onChange={handleChangeInput}
-                value={title}
+                placeholder="Add task here"
+                onChange={(e) => setTask(e.target.value)}
+                value={task}
             />
-            <button
-                className="btn btn-success text-uppercase"
-                type="button"
-                onClick={handleClick}>
-                save
+            <button onClick={handleClick}>
+                add task
             </button>
         </div>
-
     )
 }
+const TodoAddStore = connect(null,
+    (dispatch) => ({
+        onAddTask: taskTitle => dispatch({
+            type: TYPE_TODO_ADD,
+            payload: { taskTitle }
+        })
+    }))
 
-const TodoAddStore = connect(null, (dispatch) => ({
-    addTask: taskTitle => dispatch({
-        type: TODO_ADD,
-        payload: new Task(0, taskTitle)
-    })
-}))
 
 export default TodoAddStore(TodoAdd)

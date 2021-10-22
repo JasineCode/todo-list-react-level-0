@@ -1,0 +1,1 @@
+export const TYPE_TODO_ADD = "todo/add"

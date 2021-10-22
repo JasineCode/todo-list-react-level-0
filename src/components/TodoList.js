@@ -1,33 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TODO_DELETE } from '../store/types'
 import TodoItem from './TodoItem'
 
-const TodoList = ({ todos = [], toggleTask }) => {
+function TodoList({todos=[]}) {
     return (
-        <ul className=" w-50 mx-auto mt-3">
-            {
-                todos.map(t =>
-                    <TodoItem
-                        key={t.id}
-                        task={t}
-                        onToggle={toggleTask}
-                    />
-                )
-            }
+        <ul className="p-0 m-3 w-75 mx-auto">
+            {todos.map(t=> <TodoItem
+                key={t.id}
+                task={t}
+            />)}
         </ul>
     )
 }
 
-const TodoListStore =
-    connect(
-        (state) => ({ todos: state }),
-        (dispatch) => ({
-            toggleTask: taskId => dispatch({
-                type: TODO_DELETE,
-                payload: { taskId }
-            })
-        })
-    )
+const TodoListStore = connect((state)=>({
+    todos:state
+}))
+
 
 export default TodoListStore(TodoList)

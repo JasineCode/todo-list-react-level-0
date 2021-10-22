@@ -1,31 +1,14 @@
 import React from 'react'
+import { Task } from '../models/task'
 
-const TodoItem = ({ task ,onToggle}) => {
-
-    //handle click event delete btn
-    const handleClick = ()=> {
-        if(!window.confirm("Are you sure ?")) return
-        onToggle(task.id)
-    }
-
+const TodoItem = ({task=new Task()}) => {
     return (
-        <li className="list-group-item d-flex justify-content-between" >
-            <div className="form-check">
-                <input className="form-check-input" 
-                        type="checkbox" 
-                        id="flexCheckDefault" />
-
-                <label className="form-check-label" 
-                        htmlFor="flexCheckDefault">
-                    {task.title}
-                </label>
-            </div>
-
-            <button
-                className="btn btn-danger text-uppercase"
-                onClick={handleClick}>
-                del
-            </button>
+        <li className="d-flex justify-content-between p-2 border m-1 align-items-center">
+         <p>
+         <input type="checkbox" className="m-2" />
+            {task.title}
+         </p>
+            <button className="btn btn-danger">DEL</button>
         </li>
     )
 }
