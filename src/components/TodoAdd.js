@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { TYPE_TODO_ADD } from '../store/types/todo'
 
 const TodoAdd = ({ onAddTask }) => {
 
@@ -30,12 +29,12 @@ const TodoAdd = ({ onAddTask }) => {
         </div>
     )
 }
+
+
 const TodoAddStore = connect(null,
     (dispatch) => ({
-        onAddTask: taskTitle => dispatch({
-            type: TYPE_TODO_ADD,
-            payload: { taskTitle }
-        })
+        onAddTask: taskTitle => 
+        dispatch(onAddTaskAction(taskTitle))
     }))
 
 
