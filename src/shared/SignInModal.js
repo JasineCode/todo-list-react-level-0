@@ -24,7 +24,8 @@ const SignInModal = () => {
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                 <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                             </div>
-                        </form></div>
+                        </form>
+                    </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary">Conection</button>
