@@ -15,6 +15,7 @@ const MoviePage = ({ match }) => {
         let id = match.params.id
         setAnime({...ANIMES_DATA.find(a => a.id == id)})
     }, [])
+    
     return (
         <>
             <Header hideFilter />

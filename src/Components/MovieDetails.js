@@ -1,6 +1,7 @@
 import React from 'react'
+import { Anime } from '../models/anime'
 
-const MovieDetails = ({ details }) => {
+const MovieDetails = ({ details = new Anime() }) => {
     // console.log(match )
     return (
         <div className="card">
@@ -22,7 +23,12 @@ const MovieDetails = ({ details }) => {
                             {details.startingDate}</small></p>
                         {/* list of type animes  */}
                         {
-                            details.animeTypes.map(at => <span className="badge bg-secondary">{at}</span>)
+                            details.animeTypes.map(at =>
+                                <span
+                                    className={`badge bg-${at.split("/")[1]}`}>
+                                    {at.split("/")[0]}
+                                </span>
+                            )
                         }
 
                         <br />
@@ -34,7 +40,8 @@ const MovieDetails = ({ details }) => {
                                 details.actors.map(actor => <li className="list-group-item ">{actor}</li>)
                             }
                         </ul>
-                        <button className="btn btn-warning mt-3">Watch Now <i className="fas fa-eye" /></button>
+                        <a className="btn btn-warning mt-3"
+                        href={details.link}>Watch Now <i className="fas fa-eye" /></a>
                     </div>
                 </div>
             </div>

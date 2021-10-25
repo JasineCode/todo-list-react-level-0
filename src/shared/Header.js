@@ -15,7 +15,7 @@ const Header = ({hideFilter=false}) => {
                                 <a className="nav-link active" href="#">Home</a>
                             </li>
                         </ul>
-                        <form className={ hideFilter ? "d-none": "d-flex w-50" } >
+                        <form className={ true ? "d-none": "d-flex w-50" } >
                             <div className="input-group me-2 w-75">
                                 <input type="text" className="form-control" placeholder="Filter Movie By Title" />
                                 <span className="input-group-text"><i className="fas fa-search" /></span>
