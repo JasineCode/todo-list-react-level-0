@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { onAddTaskAction } from '../store/actions/todo'
 
 const TodoAdd = ({ onAddTask }) => {
 

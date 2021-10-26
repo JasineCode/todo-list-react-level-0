@@ -26,7 +26,7 @@ function TodoList({ todos = [], deleteTask, toggleTask }) {
 
 const TodoListStore = connect(
 
-    (state) => (todosSelector(state)),
+    (state) => todosSelector(state),
 
     (dispatch) => ({
         deleteTask: taskId =>

@@ -1,11 +1,11 @@
 import { Action } from "../../models/action";
 import { Task } from "../../models/task";
 import {
-    
+
     TYPE_TODO_ADD,
     TYPE_TODO_DELETE,
-    TYPE_TODO_FILTER,
-    TYPE_TODO_TOGGLE
+    TYPE_TODO_TOGGLE,
+    TYPE_UPDATE_FILTER
 
 } from "../types/todo";
 
@@ -14,10 +14,8 @@ const initialState = {
         new Task(1, "create components 😃"),
         new Task(2, "create state & pros 😃")
     ],
-    todosBackup: [
-        new Task(1, "create components 😃"),
-        new Task(2, "create state & pros 😃")
-    ]
+    filterQuery: ""
+
 }
 
 export const TodoReducer = (
@@ -27,65 +25,45 @@ export const TodoReducer = (
     switch (action.type) {
 
         case TYPE_TODO_ADD:
-            {
-                let newTask = new Task(
-                    state.todos.length + 1,
-                    action.payload.taskTitle
-                )
-                let newList = [...state.todos, newTask]
 
-                return {
-                    todos: newList,
-                    todosBackup: newList
-                }
+            return {
+                ...state,
+                todos: [...state.todos,
+                new Task(
+                    state.todos.length + 1,
+                    action.payload.taskTitle)
+                ],
+
             }
 
-
         case TYPE_TODO_DELETE:
-            {
-                let newList = [
+
+            return {
+                ...state,
+                todos: [
                     ...state.todos.filter(
                         t => t.id != action.payload.taskId
                     )
                 ]
-                return { todos: newList, todosBackup: newList }
             }
+
         case TYPE_TODO_TOGGLE:
-            {
-                let newList = [
+
+            return {
+                ...state,
+                todos: [
                     ...state.todos.map(t => {
                         if (t.id === action.payload.taskId)
                             t.isCompleted = !t.isCompleted
                         return t
                     })
                 ]
-                return {todos:newList,todosBackup:newList}
             }
-        case TYPE_TODO_FILTER:
-            {
-                let newListTodo = []
-
-                if (action.payload.query === "") {
-                    newListTodo = [...state.todosBackup]
-                    
-                } else {
-                    newListTodo = [
-                        ...state.todosBackup.filter(t =>
-                            t.title.includes(
-                                action.payload.query
-                            ))
-                    ]
-                }
-
-                return {
-                    ...state,
-                    todos: newListTodo
-                }
-
-
-
+        case TYPE_UPDATE_FILTER:
+            return {
+                ...state,
+                filterQuery: action.payload.filterValue
             }
-
         default: return state
     }
 }

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { filterTaskByTitleAction } from '../store/actions/todo'
+import { updateFilterAction } from '../store/actions/todo'
 
-const TodoFilter = ({ filterTaskByTitle }) => {
+const TodoFilter = ({ updateFilter }) => {
     const handleChange = (e) => {
-        filterTaskByTitle(e.target.value)
+        updateFilter(e.target.value)
     }
     return (
         <div className=" text-center">
@@ -21,8 +21,7 @@ const TodoFilter = ({ filterTaskByTitle }) => {
 
 const TodoFilterStore = connect(null,
     (dispatch) => ({
-        filterTaskByTitle: query =>
-            dispatch(filterTaskByTitleAction(query))
+        updateFilter : value => dispatch(updateFilterAction(value))
     })
 )
 

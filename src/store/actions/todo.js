@@ -1,8 +1,8 @@
 import {
     TYPE_TODO_ADD,
     TYPE_TODO_DELETE,
-    TYPE_TODO_FILTER,
-    TYPE_TODO_TOGGLE
+    TYPE_TODO_TOGGLE,
+    TYPE_UPDATE_FILTER
 } from "../types/todo"
 
 export const deleteTaskAction = (taskId) => ({
@@ -19,10 +19,8 @@ export const onAddTaskAction = (taskTitle) => ({
     type: TYPE_TODO_ADD,
     payload: { taskTitle }
 })
+export const updateFilterAction = (filterValue)=>({
+    type:TYPE_UPDATE_FILTER,
+    payload:{filterValue}
+})
 
-export const filterTaskByTitleAction = (query) => (
-    {
-        type: TYPE_TODO_FILTER,
-        payload: { query }
-    }
-)
