@@ -1,5 +1,5 @@
 import { Task } from "../../models/task";
-import { TYPE_TODO_ADD, TYPE_TODO_DELETE } from "../type/todo";
+import { TYPE_TODO_ADD, TYPE_TODO_DELETE, TYPE_TODO_TOGGLE } from "../type/todo";
 
 const initialState = [
 
@@ -10,6 +10,16 @@ const initialState = [
 export const ReducerToDo = (prevState = initialState, action) => {
 
     switch (action.type) {
+        case TYPE_TODO_TOGGLE :
+            return [
+                ...prevState.map(t=>{
+                    if(t.id===action.payload.taskId){
+                        t.isCompleted=!t.isCompleted
+                    }
+                    return t
+                })    
+            ]
+
         case TYPE_TODO_ADD : 
             return [
                 ...prevState, new Task(
