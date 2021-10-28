@@ -1,10 +1,10 @@
-import React from 'react'
-import { Task } from '../models/task'
 
-const ItemTodo = ({task=new Task(),onDeleteTask}) => {
-    const handleClick = ()=>{
-        if(window.confirm("Are you sure ? ")===false) return 
-        onDeleteTask(task.id)
+
+const ItemTodo = ({task, onDelete}) => {
+
+    const onDeleteTast =()=>{
+       if(window.confirm("Are You sur delete")==true)
+           onDelete(task.id)
     }
     return (
         <li>
@@ -12,8 +12,7 @@ const ItemTodo = ({task=new Task(),onDeleteTask}) => {
             type="checkbox" 
             value={task.isCompleted}/>
             <span>{task.title}</span>
-            <button 
-                onClick={handleClick}
+            <button onClick={onDeleteTast}
             >DEL</button>
         </li>
     )
