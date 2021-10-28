@@ -13,16 +13,15 @@ const MoviePage = ({ match }) => {
     useEffect(() => {
         // retrieve the anime by id 
         let id = match.params.id
-        setAnime({...ANIMES_DATA.find(a => a.id == id)})
+        setAnime({ ...ANIMES_DATA.find(a => a.id == id) })
     }, [])
-    
+
     return (
         <>
             <Header hideFilter />
             <main className="p-3 m-3 d-flex align-items-center" style={{ height: '78vh' }}>
-                <MovieDetails  details={anime} />
+                <MovieDetails details={anime} />
             </main>
-
 
             <Footer />
         </>

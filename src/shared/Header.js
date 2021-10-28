@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = ({ hideFilter = false }) => {
     return (
@@ -13,10 +14,10 @@ const Header = ({ hideFilter = false }) => {
                         <a className="navbar-brand text-warning" href="#">Anime-Site</a>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#">Home</a>
+                                <Link className="nav-link active" to="/">Home</Link>
                             </li>
                         </ul>
-                        <form className={true ? "d-none" : "d-flex w-50"} >
+                        <form className={hideFilter ? "d-none" : "d-flex w-50"} >
                             <div className="input-group me-2 w-75">
                                 <input type="text" className="form-control" placeholder="Filter Movie By Title" />
                                 <span className="input-group-text"><i className="fas fa-search" /></span>
@@ -25,8 +26,7 @@ const Header = ({ hideFilter = false }) => {
                         <button className="btn btn-warning text-uppercase"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
-                            Sign In
-                            <i className="fa fa-sign-in-alt" />
+                            Sign In <i className="fa fa-sign-in-alt" />
                         </button>
                     </div>
                 </div>
