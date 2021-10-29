@@ -22,7 +22,7 @@ const ListTodo = ({ todos, DeleteTask,ToggleTask }) => {
 
 const list = connect(
 
-    state => ({ todos: state }),
+    state => ({ todos: state.todos }),
     dispatch => ({
         DeleteTask: taskId => dispatch({
             type: TYPE_TODO_DELETE,

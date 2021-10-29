@@ -1,13 +1,25 @@
 import { Task } from "../../models/task";
-import { TYPE_TODO_ADD, TYPE_TODO_DELETE, TYPE_TODO_TOGGLE } from "../type/todo";
+import { TYPE_TODO_ADD, TYPE_TODO_DELETE, TYPE_TODO_FILTER, TYPE_TODO_TOGGLE } from "../type/todo";
 
-const initialState = [
+const initialState = {
+
+    todos:[
+
+        new Task(1, "task 1"),
+        new Task(2, "task 2")
+        
+    ],
+    backup:[
 
     new Task(1, "task 1"),
     new Task(2, "task 2")
+    
 ]
+}
 
-export const ReducerToDo = (prevState = initialState, action) => {
+
+
+export const ReducerToDo = (prevState=initialState, action) => {
 
     switch (action.type) {
         case TYPE_TODO_TOGGLE :
@@ -31,6 +43,13 @@ export const ReducerToDo = (prevState = initialState, action) => {
             return [
                 ...prevState
                     .filter((t) => t.id !== action.payload.taskId)]
+        case TYPE_TODO_FILTER:
+            return [
+                ...prevState.filter(
+                    t=>
+                    t.title.includes(action.payload.queryTitle)
+                )
+            ]            
 
         default: return prevState
     }
