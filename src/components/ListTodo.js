@@ -3,7 +3,7 @@ import ItemTodo from './ItemTodo'
 import { connect } from 'react-redux'
 import { TYPE_TODO_DELETE, TYPE_TODO_TOGGLE } from '../store/type/todo'
 
-const ListTodo = ({ todos, DeleteTask,ToggleTask }) => {
+const ListTodo = ({ todos, DeleteTask, ToggleTask }) => {
 
 
 
@@ -20,9 +20,20 @@ const ListTodo = ({ todos, DeleteTask,ToggleTask }) => {
     )
 }
 
+const todosSelector = (state) => {
+    if (state.filterTodosValue === "")
+        return state.todos
+    else {
+        return state.todos.filter(
+            t => t.title.includes(state.filterTodosValue)
+        )
+    }
+
+}
+
 const list = connect(
 
-    state => ({ todos: state.todos }),
+    state => ({ todos: todosSelector(state) }),
     dispatch => ({
         DeleteTask: taskId => dispatch({
             type: TYPE_TODO_DELETE,
