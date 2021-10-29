@@ -1,11 +1,14 @@
 import React from 'react'
-import "./../styles/admin.css"
-const MovieAdminPage = () => {
+import Theme from '../theme/Theme'
+
+const MoviePage = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Theme>
+                <h1> movie page !!</h1>
+            </Theme>
+        </>
     )
 }
 
-export default MovieAdminPage
+export default MoviePage

@@ -1,12 +1,15 @@
 import React from 'react'
-import './../styles/home.css'
+import Theme from '../theme/Theme'
 
-function HomePage() {
+function DashboardPage() {
     return (
-        <div>
+        <>
+            <Theme>
+                <h1> home Page !!</h1>
+            </Theme>
             
-        </div>
+        </>
     )
 }
 
-export default HomePage
+export default DashboardPage
