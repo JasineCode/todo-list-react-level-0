@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
 import "./../styles/auth.css"
 
+const cssCDN = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+
 function LoginPage() {
+
+    useEffect(() => {
+        let _headContent = document.querySelector("head").innerHTML
+
+        document.querySelector("head").innerHTML = 
+        `<link  rel="stylesheet" href=${cssCDN} />` + _headContent
+
+        return () => document.querySelector("head link:first-child").remove()
+
+    }, [])
+
     return (
         <div className="container">
             <div className="d-flex justify-content-center h-100">
-                <div className="cardd">
-                    <div className="cardd-header">
+                <div className="card">
+                    <div className="card-header">
                         <h3>Sign In</h3>
                         <div className="d-flex justify-content-end social_icon">
                             <span><i className="fab fa-facebook-square" ></i></span>
@@ -14,18 +28,18 @@ function LoginPage() {
                             <span><i className="fab fa-twitter-square" ></i></span>
                         </div>
                     </div>
-                    <div className="cardd-body">
+                    <div className="card-body">
                         <form>
-                            <div className="input-groupp form-group">
-                                <div className="input-groupp-prepend">
-                                    <span className="input-groupp-text">
+                            <div className="input-group form-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text">
                                         <i className="fas fa-user" ></i></span>
                                 </div>
                                 <input type="text" className="form-control" placeholder="username" />
                             </div>
-                            <div className="input-groupp form-group">
-                                <div className="input-groupp-prepend">
-                                    <span className="input-groupp-text"><i className="fas fa-key" ></i></span>
+                            <div className="input-group form-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"><i className="fas fa-key" ></i></span>
                                 </div>
                                 <input type="password" className="form-control" placeholder="password" />
                             </div>
@@ -37,7 +51,7 @@ function LoginPage() {
                             </div>
                         </form>
                     </div>
-                    <div className="cardd-footer">
+                    <div className="card-footer">
                         <div className="d-flex justify-content-center links">
                             Don't have an account ? <a href="#">Sign Up</a>
                         </div>

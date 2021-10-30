@@ -1,10 +1,25 @@
 
 
+import { useEffect } from "react"
 import SideBar from "../shared/SideBar"
 import TopBar from "../shared/TopBar"
 import "../styles/admin.css"
 
+const cssCDN = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+
+
 const Theme = ({children}) => {
+
+    useEffect(() => {
+        let _headContent = document.querySelector("head").innerHTML
+
+        document.querySelector("head").innerHTML = 
+        `<link  rel="stylesheet" href=${cssCDN} />` + _headContent
+
+        return () => document.querySelector("head link:first-child").remove()
+
+    }, [])
+
     return (
         <div className="home">
             <div className="container-fluid display-table">
