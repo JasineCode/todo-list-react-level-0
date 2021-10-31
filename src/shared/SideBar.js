@@ -1,4 +1,6 @@
 import React from 'react'
+import { LINK_ITEMS_DATA } from '../data/link-items'
+import SideBarItem from './SideBarItem'
 
 const SideBar = () => {
     return (
@@ -11,26 +13,9 @@ const SideBar = () => {
                 </div>
                 <div className="navi">
                     <ul>
-                        {/* SIDEBAR ITEM */}
-                        <li className="active">
-                            <a href="#">
-                                <i className="fa fa-home" aria-hidden="true" />
-                                <span className="hidden-xs hidden-sm">Home</span>
-                            </a>
-                        </li>
-                        {/* / SIDEBAR ITEM */}
-                        <li>
-                            <a href="#">
-                                <i className="fa fa-calendar" aria-hidden="true" />
-                                <span className="hidden-xs hidden-sm">Users</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i className="fa fa-cog" aria-hidden="true" />
-                                <span className="hidden-xs hidden-sm">Setting</span>
-                            </a>
-                        </li>
+                        {
+                            LINK_ITEMS_DATA.map(li => <SideBarItem key={li.id} linkItem={li} />)
+                        }
                     </ul>
                 </div>
             </div>

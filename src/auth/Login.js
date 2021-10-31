@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import "./../styles/auth.css"
 
@@ -9,8 +10,8 @@ function LoginPage() {
     useEffect(() => {
         let _headContent = document.querySelector("head").innerHTML
 
-        document.querySelector("head").innerHTML = 
-        `<link  rel="stylesheet" href=${cssCDN} />` + _headContent
+        document.querySelector("head").innerHTML =
+            `<link  rel="stylesheet" href=${cssCDN} />` + _headContent
 
         return () => document.querySelector("head link:first-child").remove()
 
@@ -53,10 +54,12 @@ function LoginPage() {
                     </div>
                     <div className="card-footer">
                         <div className="d-flex justify-content-center links">
-                            Don't have an account ? <a href="#">Sign Up</a>
+                            Don't have an account ? <Link to="/register"><a>Sign Up</a></Link>
                         </div>
                         <div className="d-flex justify-content-center">
-                            <a href="#">Forgot your password?</a>
+                            <Link to="/forget-pass">
+                                <a>Forgot your password?</a>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -38,7 +38,7 @@ const AppRoute = () => {
                     component={DashboardPage} />
 
                 <Route
-                    path="/movies"
+                    path="/movs"
                     component={MoviePage} />
 
                 <Route

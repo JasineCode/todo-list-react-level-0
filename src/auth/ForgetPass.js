@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import "./../styles/auth.css"
 
 const cssCDN = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -40,7 +41,8 @@ function ForgetPasswordPage() {
                     </div>
                     <div className="card-footer">
                         <div className="d-flex justify-content-center links">
-                            Don't have an account ? <a href="#">Sign Up</a>
+                            Don't have an account ? <Link to="/register">
+                                <a>Sign Up</a></Link>
                         </div>
                     </div>
                 </div>

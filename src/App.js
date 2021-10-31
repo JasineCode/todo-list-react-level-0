@@ -2,8 +2,7 @@
 import AppRoute from "./routes/AppRoute";
 
 
-const App = () => {
-  return <AppRoute/>
-}
+const App = () => <AppRoute />
+
 
 export default App;
