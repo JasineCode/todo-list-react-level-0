@@ -1,11 +1,18 @@
 import React from 'react'
+import MovieTable from '../components/MovieTable'
+import ModalAddMovie from '../shared/ModalAddMovie'
+import ModalDeleteMovie from '../shared/ModalDeleteMovie'
+import ModalEditMovie from '../shared/ModalEditMovie'
 import Theme from '../theme/Theme'
 
 const MoviePage = () => {
     return (
         <>
             <Theme>
-                <h1> movie page !!</h1>
+                <MovieTable />
+                <ModalAddMovie/>
+                <ModalEditMovie/>
+                <ModalDeleteMovie/>
             </Theme>
         </>
     )
