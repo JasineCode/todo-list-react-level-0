@@ -14,7 +14,12 @@ const SideBar = () => {
                 <div className="navi">
                     <ul>
                         {
-                            LINK_ITEMS_DATA.map(li => <SideBarItem key={li.id} linkItem={li} />)
+                            LINK_ITEMS_DATA.
+                                map(li =>
+                                    <SideBarItem
+                                        key={li.id}
+                                        linkItem={li}
+                                    />)
                         }
                     </ul>
                 </div>

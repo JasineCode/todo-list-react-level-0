@@ -3,12 +3,9 @@ import Theme from '../theme/Theme'
 
 function DashboardPage() {
     return (
-        <>
-            <Theme>
-                <h1> home Page !!</h1>
-            </Theme>
-            
-        </>
+        <Theme>
+            <h1> home Page !!</h1>
+        </Theme>
     )
 }
 

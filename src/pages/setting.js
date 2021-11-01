@@ -4,7 +4,7 @@ import Theme from '../theme/Theme'
 const SettingPage = () => {
     return (
         <Theme>
-            setting page !! 
+            <h1>Setting page !! </h1>
         </Theme>
     )
 }
