@@ -19,17 +19,17 @@ const AppRoute = () => {
                     component={LoginPage}
                 />
                 <Route
-                    exact
+                    
                     path="/forget-pass"
                     component={ForgetPasswordPage}
                 />
                 <Route
-                    exact
+                    
                     path="/reset-pass"
                     component={ResetPasswordPage}
                 />
                 <Route
-                    exact
+                    
                     path="/register"
                     component={RegisterPage}
                 />

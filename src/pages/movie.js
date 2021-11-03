@@ -9,8 +9,8 @@ const MoviePage = () => {
         <>
             <Theme>
                 <MovieTable />
-                <ModalEditMovie/>
-                <ModalDeleteMovie/>
+                <ModalEditMovie />
+                <ModalDeleteMovie />
             </Theme>
         </>
     )

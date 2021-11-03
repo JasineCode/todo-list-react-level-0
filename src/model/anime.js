@@ -5,8 +5,4 @@ export class Anime{
         this.description=description
         this.thumbnail=thumbnail
     }
-
-    isItEmpty = ()=>{
-        return this.title==="" || this.description==="" || this.thumbnail==="" 
-    }
 }
