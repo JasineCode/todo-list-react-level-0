@@ -1,77 +1,81 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+
+import axios from "axios"
 
 const App = () => {
     const [todos, setTodos] = useState([])
-    const [task, setTask] = useState()
-    const [updatedTask, setUpdatedTask] = useState({})
-
+    //component did mount 
     useEffect(() => {
+        //communiquer avec la partie sever
         axios.get("https://jsonplaceholder.typicode.com/todos/")
-            .then(res => setTodos(res.data))
+            .then((res) => {
+                setTodos(res.data)
+            })
+
     }, [])
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios
-            .post("https://jsonplaceholder.typicode.com/todos",
-                {
-                    userId: 1,
-                    id: null,
-                    title: task,
-                    completed: true
-                })
-            .then(res => alert("Task " + res.data.id + " : added successfully 😄"))
+    const deleteTodo =(idTodo)=>{
+        axios.delete("https://jsonplaceholder.typicode.com/todos/"+idTodo)
+        .then((res)=>console.log(res.status))
     }
 
-    const deleteTask = (idTask) => {
-
-        axios
-            .delete("https://jsonplaceholder.typicode.com/todos/" + idTask)
-            .then(res => alert("Task " + idTask + " : deleted 😰"))
+    const [todo, setTodo] = useState("")
+    const addNewTodo = ()=>{
+        if(todo==="") alert(" eroor")
+        else {
+            axios.post("https://jsonplaceholder.typicode.com/todos/",
+            {
+                userId:1,
+                id:null,
+                title:todo,
+                completed:false
+            })
+            .then((res)=>console.log(res.data))
+            setTodo("")
+        }
     }
 
-    //server comm
-    const handleSubmitEdit=(e)=>{
-        e.preventDefault()
-        axios.put("https://jsonplaceholder.typicode.com/todos/"+updatedTask.id,
-        updatedTask)
-        .then(res=> alert("task udpated with title : "+res.data.title))
+    const handleChangeInput = (e) => setTodo(e.target.value) 
+
+    const [todoId, setTodoId] = useState()
+    const editTodo = (t)=> {
+        setTodo(t.title)
+        setTodoId(t.id)
+    }
+    
+    const updateTodo = ()=>{
+     
+        if(todo==="") alert(" eroor")
+        else {
+            axios.put("https://jsonplaceholder.typicode.com/todos/"+todoId,
+            {
+                userId:1,
+                id:todoId,
+                title:todo,
+                completed:false
+            })
+            .then((res)=>console.log(res.data))
+            setTodo("")
+        }
     }
     return (
         <div>
-            <form
-                onSubmit={handleSubmit}
-                className="p-2 text-center">
-                <input type="text" placeholder="title"
-                    onChange={
-                        (e) => setTask(e.target.value)} />
-                <button
-                    type="submit">add task for user 1</button>
-            </form>
 
-            <form
-                onSubmit={handleSubmitEdit}
-                className="p-2 text-center">
-                <input type="text" placeholder="edit task"
-                    onChange={(e) => setUpdatedTask(
-                        {...updatedTask,title:e.target.value}
-                    )} 
-                        value={updatedTask.title}
-                />
-                <button
-                    type="submit">Edit Task </button>
-            </form>
+                <input 
+                onChange={handleChangeInput}
+                type="text" placeholder="new task " 
+                value={todo}/> 
+                <button onClick={addNewTodo}>Save</button>
+                <button onClick={updateTodo}>update</button>
             <hr />
             <ul>
-                {todos.filter(t=>t.id<10).map(t =>
-                    <li>{t.title}
-                        <button
-                            onClick={() => deleteTask(t.id)}>delete</button>
-                        <button
-                            onClick={()=> setUpdatedTask(t)}>Edit my Task</button>
-
-                    </li>)}
+                {todos.map(t => <li key={t.id}>{t.title} 
+                <button onClick={() => deleteTodo(t.id)}>DEL</button>
+                <button onClick={() => editTodo(t)}>EDIT</button>
+                
+                </li>
+                )}
             </ul>
         </div>
     )
