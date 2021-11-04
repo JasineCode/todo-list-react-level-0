@@ -86,11 +86,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
 
     .side-bar-item:hover {
         background-color: rgba(250, 250, 250, 0.109);
-        cursor: pointer;
     }
 
     .side-bar-item i {
@@ -108,6 +108,7 @@
 
     .wrapper {
         flex-grow: 1;
+        position: relative;
     }
 
     /* TOP BAR  */
@@ -137,16 +138,25 @@
         margin-right: 15px;
     }
 
-    .notification,.toggle-theme-mode,.support-ticket,.user-infos-continer {cursor: pointer;}
-    .notification{margin-top: 4px;}
+    .notification,
+    .toggle-theme-mode,
+    .support-ticket,
+    .user-infos-continer {
+        cursor: pointer;
+    }
+
+    .notification {
+        margin-top: 4px;
+    }
+
     .notification i {
         font-size: 1.6em;
-        color:#1A0AB5;
+        color: #1A0AB5;
     }
 
     .support-ticket {
         font-size: 1.4em;
-        color:#FF6464
+        color: #FF6464
     }
 
     .circle-icon {
@@ -172,9 +182,11 @@
         width: fit-content;
         border: solid .3px;
         padding: 2px;
+        border-color: gray;
     }
 
     .circle-avatar {
+
         height: 40px;
         width: 40px;
         border-radius: 50%;
@@ -191,10 +203,16 @@
     .user-infos-continer>* {
         margin: 3px;
     }
-    .user-infos{
-        color:gray
+
+    .user-infos {
+        position: relative;
+        color: gray;
+
     }
-    .user-infos i{font-size:.8em}
+
+    .user-infos i {
+        font-size: .8em
+    }
 
     /* TOP BAR END  */
 
@@ -211,6 +229,35 @@
     .border {
         border: solid
     }
+
+    .user-infos-details {
+        /* display: none; */
+        position: absolute;
+        width: fit-content;
+        top: 90px;
+        right: 10px;
+        border-radius: 5px;
+        -moz-box-shadow:0 2px 8px rgb(0 0 0 / 15%);
+        box-shadow:0 2px 8px rgb(0 0 0 / 15%);
+    }
+
+    .user-infos-item-disabled,
+    .user-infos-item {
+        padding: 16px 45px 16px 23px;
+    }
+    .user-infos-item-disabled i{float: right;margin-top: 2px;}
+    .user-infos-item-disabled span.phone-number{font-weight: bold; color:gray;font-size: 1.1em;}
+    .user-infos-item-disabled span.hs{font-weight: bold; color:gray;font-size: 1.1em;}
+
+    .user-infos-item {
+        background-color: white;
+        cursor: pointer;
+        transition: all .3s;
+    }
+    .user-infos-item:hover {
+        background-color: rgba(29, 28, 28, 0.082);
+    }
+
 </style>
 
 <body>
@@ -220,9 +267,11 @@
             <div class="logo"></div>
             <nav class="menu">
                 <ul>
+                    <!-- SIDE BAR ITEM  -->
                     <li class="side-bar-item">
                         <i class="fas fa-tachometer"></i> <a href="">Dashboard</a>
                     </li>
+                    <!-- SIDE BAR ITEM END  -->
                     <li class="side-bar-item">
                         <i class="fas fa-bolt"></i>
                         <a href="">Checkpoints</a>
@@ -245,6 +294,7 @@
                     </li>
                 </ul>
             </nav>
+            <!-- SIDE BAR FOOTER -->
             <div class="side-bar-footer">
                 <ul>
                     <li class="side-bar-item">
@@ -261,6 +311,7 @@
             <!-- TOP BAR  -->
             <header class="top-bar">
                 <span class="title-page">Dashboard</span>
+
                 <div class="top-bar-right">
                     <div class="toggle-theme-mode">
                         <div class="circle-icon"><i class="fas fa-moon"></i></div>
@@ -271,6 +322,7 @@
                     <div class="support-ticket" title="Open Support Ticket">
                         <i class="fas fa-user-cog"></i>
                     </div>
+                    <!-- USER INFOS  -->
                     <div class="user-infos-continer">
                         <div class="avatar-continer">
                             <div class="circle-avatar"></div>
@@ -278,15 +330,41 @@
                         <div class="user-infos">
                             <span>Yassine</span>
                             <i class="fa fa-arrow-down"></i>
+
                         </div>
                     </div>
+                    <!-- USER INFOS END -->
                 </div>
+
             </header>
+            <!-- USER INFOS DETAILS  -->
+            <div class="user-infos-details ">
+                <ul>
+                    <li class="user-infos-item-disabled">
+                        <h2>Yassine Rassy</h2>
+                        <span class="email">
+                            yassine.rassy1@gmail.com
+                        </span>
+                    </li>
+                    <li class="user-infos-item-disabled">
+                        <span class="phone-number">+212 635 093 199</span>
+                        <i class="fas fa-phone"></i>
+                    </li>
+                    <li class="user-infos-item-disabled">
+                        <span class="hs">
+                            Casablanca HS
+                        </span>
+                        <i class="far fa-building"></i>
+                    </li>
+                    <li class="user-infos-item">Account Settings</li>
+                    <li class="user-infos-item">Log out</li>
+                </ul>
+            </div>
             <!-- TOP BAR END -->
-           
+
             <!-- PAGE CONTENT -->
             <section class="main-page-content">
-               
+
             </section>
         </div>
     </main>
