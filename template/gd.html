@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Design</title>
+    <!-- CDN FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+
+    .admin-layout {
+        display: flex;
+
+    }
+
+    .admin-layout>* {
+        border: solid .5px
+    }
+
+    .side-bar {
+        width: 5%;
+        height: 100vh;
+        background-color: #18204B;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* align-items: center; */
+        transition: all .3s;
+        padding-bottom: 10px;
+    }
+
+    .side-bar:hover {
+        width: 17%;
+    }
+
+    .side-bar:hover .logo {
+        background-image: url("logo.svg");
+    }
+
+    .side-bar:hover .side-bar-item a {
+        display: block;
+        margin-left: 24px;
+    }
+
+    .side-bar:hover .side-bar-item {
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+
+    .side-bar .logo {
+        width: 80%;
+        background-image: url("./xs-logo.svg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 34px;
+        margin: 30px auto;
+    }
+
+    .side-bar-item {
+        color: white;
+        padding: 15px 10px;
+        font-weight: bold;
+        /* border: solid; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .side-bar-item:hover {
+        background-color: rgba(250, 250, 250, 0.109);
+        cursor: pointer;
+    }
+
+    .side-bar-item i {
+        font-size: 1.4em;
+        margin: 10px;
+        box-shadow: 10px;
+    }
+
+    .side-bar-item a {
+        font-size: 1em;
+        display: none;
+        color: white;
+        text-decoration: none;
+    }
+
+    .wrapper {
+        flex-grow: 1;
+    }
+
+    /* TOP BAR  */
+    .top-bar {
+        width: 100%;
+        height: 12vh;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        align-items: center;
+        -moz-box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
+        box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
+
+    }
+
+    .title-page {
+        font-size: 1em;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+    .top-bar-right {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-right: 15px;
+    }
+
+    .notification,.toggle-theme-mode,.support-ticket,.user-infos-continer {cursor: pointer;}
+    .notification{margin-top: 4px;}
+    .notification i {
+        font-size: 1.6em;
+        color:#1A0AB5;
+    }
+
+    .support-ticket {
+        font-size: 1.4em;
+        color:#FF6464
+    }
+
+    .circle-icon {
+        border: solid .5;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(47, 54, 61);
+        -moz-box-shadow: rgb(0 0 0 / 60%) 0px 1px 5px;
+        box-shadow: rgb(0 0 0 / 60%) 0px 1px 5px;
+
+    }
+
+    .toggle-theme-mode .circle-icon i {
+        color: yellow;
+    }
+
+    .avatar-continer {
+        border-radius: 50%;
+        width: fit-content;
+        border: solid .3px;
+        padding: 2px;
+    }
+
+    .circle-avatar {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-image: url("https://gomycodelearn.blob.core.windows.net/profiles/2b3edd8c-98c9-4a15-8b05-e6c92ab73a00-132735634787447366.jpg");
+        background-size: 100% 100%;
+    }
+
+    .user-infos-continer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .user-infos-continer>* {
+        margin: 3px;
+    }
+    .user-infos{
+        color:gray
+    }
+    .user-infos i{font-size:.8em}
+
+    /* TOP BAR END  */
+
+    .instructor-preview {
+        width: 100%;
+        background-color: #f7f7f7;
+        height: 88vh;
+    }
+
+    .menu {
+        flex-grow: 1;
+    }
+
+    .border {
+        border: solid
+    }
+</style>
+
+<body>
+    <main class="admin-layout">
+        <!-- SIDE BAR  -->
+        <section class="side-bar">
+            <div class="logo"></div>
+            <nav class="menu">
+                <ul>
+                    <li class="side-bar-item">
+                        <i class="fas fa-tachometer"></i> <a href="">Dashboard</a>
+                    </li>
+                    <li class="side-bar-item">
+                        <i class="fas fa-bolt"></i>
+                        <a href="">Checkpoints</a>
+                    </li>
+                    <li class="side-bar-item">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <a href=""> Projects</a>
+                    </li>
+                    <li class="side-bar-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <a href="">One To one</a>
+                    </li>
+                    <li class="side-bar-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <a href=""> Students</a>
+                    </li>
+                    <li class="side-bar-item">
+                        <i class="fas fa-store"></i>
+                        <a href="">Store</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="side-bar-footer">
+                <ul>
+                    <li class="side-bar-item">
+                        <i class="fas fa-book-reader"></i>
+                        <a href="">Read</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- SIDE BAR END -->
+
+        <!-- Wrapper  -->
+        <div class="wrapper">
+            <!-- TOP BAR  -->
+            <header class="top-bar">
+                <span class="title-page">Dashboard</span>
+                <div class="top-bar-right">
+                    <div class="toggle-theme-mode">
+                        <div class="circle-icon"><i class="fas fa-moon"></i></div>
+                    </div>
+                    <div class="notification">
+                        <i class="far fa-bell"></i>
+                    </div>
+                    <div class="support-ticket" title="Open Support Ticket">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="user-infos-continer">
+                        <div class="avatar-continer">
+                            <div class="circle-avatar"></div>
+                        </div>
+                        <div class="user-infos">
+                            <span>Yassine</span>
+                            <i class="fa fa-arrow-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- TOP BAR END -->
+            <section class="instructor-preview">
+                <!-- preview side bar -->
+                <section class="preview-side-bar">
+                    <header class="current-progress"></header>
+                    <main class="side-bar-content">
+                        <!-- <ul class="track-timeline">
+                            <li class="track-timeline-item">
+                                Web Fundamentals
+                            </li>
+                        </ul> -->
+                    </main>
+                </section>
+                <!-- / preview-side-bar  -->
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
