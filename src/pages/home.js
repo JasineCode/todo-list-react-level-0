@@ -1,6 +1,8 @@
 import React from 'react'
 import Theme from '../theme/Theme'
 
+import './../styles/admin.css'
+
 function DashboardPage() {
     return (
         <Theme>
