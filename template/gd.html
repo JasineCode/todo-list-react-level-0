@@ -74,7 +74,7 @@
         background-image: url("./xs-logo.svg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        height: 34px;
+        height: 25px;
         margin: 30px auto;
     }
 
@@ -94,13 +94,13 @@
     }
 
     .side-bar-item i {
-        font-size: 1.4em;
+        font-size: 1.2em;
         margin: 10px;
         box-shadow: 10px;
     }
 
     .side-bar-item a {
-        font-size: 1em;
+        font-size: .9em;
         display: none;
         color: white;
         text-decoration: none;
@@ -159,7 +159,7 @@
         color: #FF6464
     }
 
-    .circle-icon {
+    .toggle-theme-mode .circle-icon {
         border: solid .5;
         height: 30px;
         width: 30px;
@@ -173,6 +173,11 @@
 
     }
 
+    .toggle-theme-mode div.toggle-support{
+        height: 20px;
+        width: 60px;
+        border: solid;
+    }
     .toggle-theme-mode .circle-icon i {
         color: yellow;
     }
@@ -237,27 +242,44 @@
         top: 90px;
         right: 10px;
         border-radius: 5px;
-        -moz-box-shadow:0 2px 8px rgb(0 0 0 / 15%);
-        box-shadow:0 2px 8px rgb(0 0 0 / 15%);
+        -moz-box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+        box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+        -moz-zoom: 0.9;
+        zoom: 9;
     }
 
     .user-infos-item-disabled,
     .user-infos-item {
-        padding: 16px 45px 16px 23px;
+        padding: 12px 45px 6px 23px;
     }
-    .user-infos-item-disabled i{float: right;margin-top: 2px;}
-    .user-infos-item-disabled span.phone-number{font-weight: bold; color:gray;font-size: 1.1em;}
-    .user-infos-item-disabled span.hs{font-weight: bold; color:gray;font-size: 1.1em;}
 
+    .user-infos-item-disabled i {
+        float: right;
+        margin-top: 6px;
+    }
+
+    .user-infos-item-disabled span.phone-number,
+    .user-infos-item-disabled span.hs {
+        font-weight: bold;
+        color: #808080c2;
+        font-size: .9em;
+    }
+    span.hs{margin-left: 3px;}
     .user-infos-item {
         background-color: white;
         cursor: pointer;
+        font-size: 1em;
         transition: all .3s;
     }
+
     .user-infos-item:hover {
         background-color: rgba(29, 28, 28, 0.082);
     }
-
+    .user-infos-item-disabled .email{
+        color:gray;
+        font-size: .9em;
+        margin-left: 3px;
+    }
 </style>
 
 <body>
@@ -315,6 +337,7 @@
                 <div class="top-bar-right">
                     <div class="toggle-theme-mode">
                         <div class="circle-icon"><i class="fas fa-moon"></i></div>
+                        <div class="toggle-support"></div>
                     </div>
                     <div class="notification">
                         <i class="far fa-bell"></i>
@@ -341,7 +364,7 @@
             <div class="user-infos-details ">
                 <ul>
                     <li class="user-infos-item-disabled">
-                        <h2>Yassine Rassy</h2>
+                        <h3>Yassine Rassy</h3>
                         <span class="email">
                             yassine.rassy1@gmail.com
                         </span>
